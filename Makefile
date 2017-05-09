@@ -37,7 +37,7 @@ uninstall:
 bin/ol:
 	mkdir -p bin tmp
 	cd tmp; test -f $(OWL).c.gz || wget $(OWLURL)/$(OWL).c.gz
-	sha256sum tmp/$(OWL).c.gz | grep -q $(OWLSHA)
+	shasum -a 256 tmp/$(OWL).c.gz | grep -q $(OWLSHA)
 	gzip -d < tmp/$(OWL).c.gz > tmp/$(OWL).c
 	cc -O2 -o bin/ol tmp/$(OWL).c
 
